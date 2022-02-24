@@ -1,6 +1,6 @@
 {
   "name": "server-requests",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "has no descriprion",
   "main": "index.js",
   "scripts": {
