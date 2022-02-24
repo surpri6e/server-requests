@@ -1,0 +1,23 @@
+{
+  "name": "server-requests",
+  "version": "1.0.6",
+  "description": "has no descriprion",
+  "main": "index.js",
+  "scripts": {
+    "up": "tsc && git add . && git commit -m \"bot\" && git push && npm update && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surpri6e/server-requests.git"
+  },
+  "keywords": [],
+  "author": "surpri6e",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/surpri6e/server-requests/issues"
+  },
+  "homepage": "https://github.com/surpri6e/server-requests#readme",
+  "dependencies": {
+    "typescript": "^4.5.5"
+  }
+}
