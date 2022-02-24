@@ -1,3 +1,4 @@
 import { serverRequest } from "./src/server/server";
+import { IUserPhotos } from "./src/types";
 export { serverRequest };
-// Возможно это из-за зависимости TS
+export { IUserPhotos };
