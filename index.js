@@ -1,3 +1,3 @@
-import { serverRequest } from "./src/server/server";
+import { serverRequest, getDataFromServerRequest } from "./src/server/server";
 export { serverRequest };
-// Возможно это из-за зависимости TS
+export { getDataFromServerRequest };

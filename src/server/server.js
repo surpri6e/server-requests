@@ -44,3 +44,6 @@ export function serverRequest(url) {
         }
     });
 }
+export function getDataFromServerRequest(data) {
+    return JSON.parse(JSON.stringify(data));
+}

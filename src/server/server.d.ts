@@ -13,3 +13,4 @@
     }
  */
 export declare function serverRequest(url: string): Promise<any>;
+export declare function getDataFromServerRequest(data: any): any;

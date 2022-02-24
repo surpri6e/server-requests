@@ -32,3 +32,7 @@ export async function serverRequest(url: string) {
         console.log('Finally');
     }
 }
+
+export function getDataFromServerRequest(data: any) {
+    return JSON.parse(JSON.stringify(data));
+}

@@ -1,7 +1,7 @@
 {
   "name": "server-requests",
-  "version": "1.0.9",
-  "description": "has no descriprion",
+  "version": "1.1.0",
+  "description": "Librirary for work with server",
   "main": "./index.ts",
   "typings": "./index.d.ts",
   "scripts": {
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/surpri6e/server-requests.git"
   },
-  "keywords": [],
+  "keywords": ["server", "typescript", "request"],
   "author": "surpri6e",
   "license": "MIT",
   "bugs": {
