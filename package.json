@@ -1,9 +1,9 @@
 {
   "name": "server-requests",
-  "version": "1.1.0",
-  "description": "Librirary for work with server",
+  "version": "1.1.1",
   "main": "./index.ts",
   "typings": "./index.d.ts",
+  "description": "Librirary for work with server requests",
   "scripts": {
     "up": "tsc && git add . && git commit -m \"bot\" && git push && npm update && npm publish"
   },

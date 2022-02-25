@@ -1,1 +1,1 @@
-export {};
+export const testOnLink = /^http:\/\/.|^https:\/\/./;

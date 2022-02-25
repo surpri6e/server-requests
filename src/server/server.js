@@ -7,43 +7,80 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const sleep = (ms) => {
+import { testOnLink, } from "../types";
+export class SettingsRequest {
+    constructor(options) {
+        this._method = options._method;
+        this._urlServer = options._urlServer;
+        this._responseType = options._responseType;
+        this._urlStatus = this.validatorUrlStatus();
+        this.validatorUrlServer();
+    }
+    validatorUrlStatus() {
+        if (testOnLink.test(this._urlServer)) {
+            return 'valid';
+        }
+        else {
+            return 'invalid';
+        }
+    }
+    validatorUrlServer() {
+        if (this._urlStatus === 'invalid') {
+            console.error('Invalid link!');
+        }
+        else {
+            return;
+        }
+    }
+}
+export function XHRServerRequest(options) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise((res, rej) => {
+            const XHR = new XMLHttpRequest();
+            XHR.open(options._method, options._urlServer);
+            XHR.responseType = options._responseType;
+            XHR.onload = () => {
+                if (XHR.status > 399) {
+                    rej(XHR.response);
+                }
+                else {
+                    res(XHR.response);
+                }
+            };
+            XHR.onerror = () => {
+                rej(XHR.response);
+            };
+            XHR.send();
+        });
+        // Доабвить сюда then и catch
+    });
+}
+export const sleep = (ms) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(ms);
         }, ms);
     });
 };
-/**
-    @example
-    export async function serverRequest(url: string) {
-    try {
-        await sleep(0);
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    } catch (err) {
-        console.error(err);
-    } finally {
-        console.log('Finally');
-    }
- */
-export function serverRequest(url) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield sleep(0);
-            const response = yield fetch(url);
-            const data = yield response.json();
-            return data;
-        }
-        catch (err) {
-            console.error(err);
-        }
-        finally {
-            console.log('Finally');
-        }
-    });
-}
-export function getDataFromServerRequest(data) {
-    return JSON.parse(JSON.stringify(data));
-}
+// export async function serverRequest(urlServer: string) {
+//     try {
+//         await sleep(0);
+//         const response = await fetch(urlServer);
+//         const data = await response.json();
+//         return data;
+//     } catch (err) {
+//         console.error(err);
+//     } finally {
+//         console.log('Finally');
+//     }
+// }
+// const serttings = { // : setting
+//     url: 'ssss',
+//     method: 'normal'
+// }
+// export async function serverRequestWithoutDelay(/* urlServer: string */) {
+// }
+// export async function serverRequestWithDelay(/* urlServer: string */) {}
+// export function getDataFromServerRequest(data: any) {
+//     return JSON.parse(JSON.stringify(data));
+// }

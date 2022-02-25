@@ -1,33 +1,25 @@
+export const testOnLink: RegExp = /^http:\/\/.|^https:\/\/./;
+export type isValidLink = 'valid' | 'invalid';
+export type methodRequest = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+export type resTypeRequest = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
+
+
 /**
-    @example
-    interface IUserTodos {
-        completed: boolean;
-        id: number;
-        title: string;
-        userId: number;
-    }
+ * A convenient interface that allows you to create a setting object for a request to the server
  */
-export interface IUserTodos {
-    completed: boolean;
-    id: number;
-    title: string;
-    userId: number;
+export interface settingsRequest {
+    /**
+     * A static link that will send questions to the server
+     */
+    readonly _urlServer: string;
+    /**
+     * The type to be assigned to the response
+     */
+    readonly _responseType: resTypeRequest; 
+    /**
+     * This field allows you to select which request method will go to the server
+     */
+    readonly _method: methodRequest;
 }
-/**
-    @example
-    interface IUserPhotos {
-        albumId: number;
-        id: number;
-        title: string;
-        url: string;
-        thumbnailUrl: string;
-    }
- */
-export interface IUserPhotos {
-    albumId: number;
-    id: number;
-    title: string;
-    url: string;
-    thumbnailUrl: string;
-}
+
 

@@ -1,16 +1,12 @@
-/**
-    @example
-    export async function serverRequest(url: string) {
-    try {
-        await sleep(0);
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    } catch (err) {
-        console.error(err);
-    } finally {
-        console.log('Finally');
-    }
- */
-export declare function serverRequest(url: string): Promise<any>;
-export declare function getDataFromServerRequest(data: any): any;
+import { settingsRequest, resTypeRequest, isValidLink, methodRequest } from "../types";
+export declare class SettingsRequest implements settingsRequest {
+    readonly _responseType: resTypeRequest;
+    readonly _urlServer: string;
+    readonly _urlStatus: isValidLink;
+    readonly _method: methodRequest;
+    constructor(options: settingsRequest);
+    private validatorUrlStatus;
+    private validatorUrlServer;
+}
+export declare function XHRServerRequest(options: settingsRequest): Promise<unknown>;
+export declare const sleep: (ms: number) => Promise<number>;
