@@ -1,4 +1,4 @@
-# server-requests@1.1.1
+# server-requests@1.1.2
 
 This library allows us to send and receive various data from the server, it is in this library that both native methods and functions and advanced ones are implemented. And our library was created both under JavaScript and under Typescript.
 

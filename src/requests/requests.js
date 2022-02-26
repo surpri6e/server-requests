@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { testOnLink, } from "../types";
+const testOnLink = /^http:\/\/.|^https:\/\/./;
 export class SettingsRequest {
     constructor(options) {
         this._method = options._method;

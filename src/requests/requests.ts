@@ -1,8 +1,6 @@
-import { 
-    settingsRequest, testOnLink, resTypeRequest, 
-    isValidLink, methodRequest,
-} from "../types";
+import { settingsRequest, resTypeRequest, isValidLink, methodRequest } from "../types/settingsRequest.js";
 
+const testOnLink: RegExp = /^http:\/\/.|^https:\/\/./;
 
 export class SettingsRequest implements settingsRequest {
     readonly _responseType: resTypeRequest;

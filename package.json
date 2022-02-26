@@ -1,8 +1,9 @@
 {
   "name": "server-requests",
-  "version": "1.1.1",
-  "main": "./index.ts",
-  "typings": "./index.d.ts",
+  "version": "1.1.2",
+  "type": "module",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
   "description": "Librirary for work with server requests",
   "scripts": {
     "up": "tsc && git add . && git commit -m \"bot\" && git push && npm update && npm publish"
@@ -11,14 +12,18 @@
     "type": "git",
     "url": "git+https://github.com/surpri6e/server-requests.git"
   },
-  "keywords": ["server", "typescript", "request"],
+  "keywords": [
+    "server",
+    "typescript",
+    "request"
+  ],
   "author": "surpri6e",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/surpri6e/server-requests/issues"
   },
   "homepage": "https://github.com/surpri6e/server-requests#readme",
-  "dependencies": {
-    "typescript": "^4.5.5" 
+  "devDependencies": {
+    "typescript": "^4.5.5"
   }
 }
