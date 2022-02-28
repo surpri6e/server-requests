@@ -1,7 +1,10 @@
-import { settingsRequest, resTypeRequest, isValidLink, methodRequest } from "../types/settingsRequest.js";
+import { settingsRequest, resTypeRequest, isValidLink, methodRequest } from "settingsRequest.js";
 
 const testOnLink: RegExp = /^http:\/\/.|^https:\/\/./;
 
+/**
+ * bebra
+ */
 export class SettingsRequest implements settingsRequest {
     readonly _responseType: resTypeRequest;
     readonly _urlServer: string;

@@ -1,4 +1,7 @@
-import { settingsRequest, resTypeRequest, isValidLink, methodRequest } from "../types/settingsRequest.js";
+import { settingsRequest, resTypeRequest, isValidLink, methodRequest } from "settingsRequest.js";
+/**
+ * bebra
+ */
 export declare class SettingsRequest implements settingsRequest {
     readonly _responseType: resTypeRequest;
     readonly _urlServer: string;
