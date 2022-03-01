@@ -4,27 +4,29 @@ This library allows us to send and receive various data from the server, it is i
 
 ## Install 
 
-**Via npm**
+**Install from npm**
 ```
-npm i server-requests   // Installation
-npm i -D server-requests    // Installation how developer dependencies
-npm i server-requests -g    // Installaion global
+npm i server-requests       // Installation
+npm i -D server-requests    // Installation how developer dependence
+npm i server-requests -g    // Global installaion
 ```
 
-**Imported modules in JS** 
+**Imported modules** 
 ```js
-import { XHRServerRequest } from 'server-requests'; // specific methods
-// (***)
-
-import * as sq from 'server-requests'; // all modules and types 
+import { XHRServerRequest, SettingsRequest } from 'server-requests';
+// Or
+import * as sr from 'server-requests';
 ```
 ## Methodes 
 
+In this block, the main methods stored in the library will be analyzed.
+
+### XHRServerRequest(options, body?)
+
 ```js
 XHRServerRequest({
-    _urlServer: 'https://***',
+    _urlServer: 'http://example.com/example',
     _responseType: 'json',
     _method: 'GET',
-});
-// Everything! Basic request is ready!
+})
 ```

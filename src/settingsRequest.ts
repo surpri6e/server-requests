@@ -1,7 +1,7 @@
 export type isValidLink = 'valid' | 'invalid';
 export type methodRequest = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 export type resTypeRequest = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
-
+export type errorOfRequest = 'Temporary-error' | 'Status-error' | 'Unexplained error';
 
 /**
  * A convenient interface that allows you to create a setting object for a request to the server

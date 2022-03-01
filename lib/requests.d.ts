@@ -1,6 +1,6 @@
-import { settingsRequest, resTypeRequest, isValidLink, methodRequest } from "settingsRequest.js";
+import { settingsRequest, resTypeRequest, isValidLink, methodRequest } from './settingsRequest.js';
 /**
- * bebra
+ * If you are sending many different requests, you can make a separate statement object using this class
  */
 export declare class SettingsRequest implements settingsRequest {
     readonly _responseType: resTypeRequest;
@@ -11,5 +11,7 @@ export declare class SettingsRequest implements settingsRequest {
     private validatorUrlStatus;
     private validatorUrlServer;
 }
-export declare function XHRServerRequest(options: settingsRequest): Promise<unknown>;
-export declare const sleep: (ms: number) => Promise<number>;
+/**
+ * Function to create an XHR request to the server
+ */
+export declare function XHRServerRequest(options: settingsRequest, body?: any): Promise<unknown>;

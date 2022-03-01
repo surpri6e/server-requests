@@ -1,6 +1,5 @@
-node_modules
+src/
+node_modules/
 tsconfig.json
 .parcel-cache
-.gitignore
 
-./src

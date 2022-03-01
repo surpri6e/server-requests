@@ -1,9 +1,9 @@
-import { settingsRequest, resTypeRequest, isValidLink, methodRequest } from "settingsRequest.js";
+import { settingsRequest, resTypeRequest, isValidLink, methodRequest, errorOfRequest } from './settingsRequest.js';
 
 const testOnLink: RegExp = /^http:\/\/.|^https:\/\/./;
 
 /**
- * bebra
+ * If you are sending many different requests, you can make a separate statement object using this class
  */
 export class SettingsRequest implements settingsRequest {
     readonly _responseType: resTypeRequest;
@@ -36,63 +36,52 @@ export class SettingsRequest implements settingsRequest {
     }
 }
 
-export async function XHRServerRequest(options: settingsRequest) {
-    return new Promise((res, rej) => {
+/**
+ * Function to create an XHR request to the server
+ */
+export async function XHRServerRequest(options: settingsRequest, body: any = null) {
+    return new Promise <any>((res, rej) => {
         const XHR = new XMLHttpRequest();
+        let error: errorOfRequest;
 
         XHR.open(options._method, options._urlServer);
         XHR.responseType = options._responseType;
 
-        XHR.onload = () => {
-            if(XHR.status > 399) {
-                rej(XHR.response);
-            } else {
+        if(options._responseType === 'json') {
+            XHR.setRequestHeader('Content-Type', 'application/json');
+        }
+
+        XHR.onreadystatechange = () => {
+            if(XHR.readyState === 4 && XHR.status < 400) {
                 res(XHR.response);
             }
         }
 
-        XHR.onerror = () => {
-            rej(XHR.response)
+        if(XHR.status >= 400) {
+            rej(error = 'Status-error');
         }
 
-        XHR.send();
+        XHR.onerror = () => {
+            rej(error = 'Unexplained error');
+        }
+
+        XHR.timeout = 2000;
+        XHR.ontimeout = () => {
+            rej(error = 'Temporary-error');
+        }
+
+        if(options._method === 'POST') {
+            XHR.send(body);
+        } else {
+            XHR.send();
+        }
     }) 
-
-    // Доабвить сюда then и catch
-}
-
-export const sleep = (ms: number): Promise<number> => {
-    return new Promise((resolve: any) => {
-        setTimeout(() => {
-            resolve(ms);
-        }, ms)
+    .then(data => {
+        return new Promise((resolve) => {
+            resolve(data);
+        })
+    })
+    .catch(err => {
+        console.error(err);
     })
 }
-
-// export async function serverRequest(urlServer: string) {
-//     try {
-//         await sleep(0);
-//         const response = await fetch(urlServer);
-//         const data = await response.json();
-//         return data;
-//     } catch (err) {
-//         console.error(err);
-//     } finally {
-//         console.log('Finally');
-//     }
-// }
-
-// const serttings = { // : setting
-//     url: 'ssss',
-//     method: 'normal'
-// }
-
-// export async function serverRequestWithoutDelay(/* urlServer: string */) {
-
-// }
-
-// export async function serverRequestWithDelay(/* urlServer: string */) {}
-
-// export function getDataFromServerRequest(data: any) {
-//     return JSON.parse(JSON.stringify(data));
-// }
