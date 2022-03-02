@@ -7,11 +7,11 @@ export declare class SettingsRequest implements settingsRequest {
     readonly _urlServer: string;
     readonly _urlStatus: isValidLink;
     readonly _method: methodRequest;
-    constructor(options: settingsRequest);
+    constructor(urlServer: string, method?: methodRequest, responseType?: resTypeRequest);
     private validatorUrlStatus;
     private validatorUrlServer;
 }
 /**
  * Function to create an XHR request to the server
  */
-export declare function XHRServerRequest(options: settingsRequest, body?: any): Promise<unknown>;
+export declare function XHRServerRequest(options: settingsRequest, body?: any): Promise<any>;

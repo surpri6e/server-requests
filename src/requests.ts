@@ -11,10 +11,10 @@ export class SettingsRequest implements settingsRequest {
     readonly _urlStatus: isValidLink;
     readonly _method: methodRequest;
 
-    constructor(options: settingsRequest) {
-        this._method = options._method;
-        this._urlServer = options._urlServer;
-        this._responseType = options._responseType;
+    constructor(urlServer: string, method: methodRequest = 'GET', responseType: resTypeRequest = 'json') {
+        this._method = method;
+        this._urlServer = urlServer;
+        this._responseType = responseType;
         this._urlStatus = this.validatorUrlStatus();
         this.validatorUrlServer();
     }
@@ -51,6 +51,8 @@ export async function XHRServerRequest(options: settingsRequest, body: any = nul
             XHR.setRequestHeader('Content-Type', 'application/json');
         }
 
+        XHR.setRequestHeader('Content-Type', 'application');
+
         XHR.onreadystatechange = () => {
             if(XHR.readyState === 4 && XHR.status < 400) {
                 res(XHR.response);
@@ -71,13 +73,13 @@ export async function XHRServerRequest(options: settingsRequest, body: any = nul
         }
 
         if(options._method === 'POST') {
-            XHR.send(body);
+            XHR.send(JSON.parse(JSON.stringify(body)));
         } else {
             XHR.send();
         }
     }) 
     .then(data => {
-        return new Promise((resolve) => {
+        return new Promise <any>((resolve) => {
             resolve(data);
         })
     })
